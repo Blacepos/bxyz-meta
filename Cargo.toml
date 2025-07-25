@@ -11,5 +11,5 @@ log = { version = "*" }
 tokio = { version = "*", features = ["full"] }
 axum = { version = "*" }
 tower = { version = "*" }
-tower-http = { version = "*", features = ["fs"] }
+tower-http = { version = "*", features = ["trace", "fs"] }
 slot = { path = "../slot" }

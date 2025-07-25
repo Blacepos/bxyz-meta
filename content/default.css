@@ -27,7 +27,6 @@ audio {
     margin-left: auto;
     margin-right: auto;
     min-width: 400px;
-    height: auto;
     object-fit: inherit;
 }
 

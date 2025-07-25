@@ -3,7 +3,7 @@ use std::{net::SocketAddr, path::Path, str::FromStr};
 use axum::{response::Html, routing::get, Router};
 use init::initialize;
 use tokio::fs;
-use tower_http::services::ServeDir;
+use tower_http::{services::ServeDir, trace::TraceLayer};
 
 pub mod cli;
 pub mod init;
@@ -46,6 +46,7 @@ async fn main() {
                 )
             }),
         )
-        .nest_service("/meta/content", ServeDir::new(CONTENT_DIR));
+        .nest_service("/meta/content", ServeDir::new(CONTENT_DIR))
+        .layer(TraceLayer::new_for_http());
     axum::serve(listener, routes).await.unwrap();
 }
