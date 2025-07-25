@@ -1,12 +1,15 @@
-use std::{net::SocketAddr, str::FromStr};
+use std::{net::SocketAddr, path::Path, str::FromStr};
 
-use axum::{routing::get, Router};
+use axum::{response::Html, routing::get, Router};
 use init::initialize;
+use tokio::fs;
+use tower_http::services::ServeDir;
 
 pub mod cli;
 pub mod init;
 
 const MODULE_NAME: &str = "meta";
+const CONTENT_DIR: &str = "content";
 
 #[tokio::main]
 async fn main() {
@@ -32,10 +35,17 @@ async fn main() {
     }
 
     // set up webserver
-    let routes = Router::new().route("/meta/index", get(test_route));
+    let routes = Router::new()
+        .route(
+            "/meta/index",
+            get(async || {
+                Html(
+                    fs::read(Path::new(CONTENT_DIR).join("pages/index.html"))
+                        .await
+                        .expect("index.html exists"),
+                )
+            }),
+        )
+        .nest_service("/meta/content", ServeDir::new(CONTENT_DIR));
     axum::serve(listener, routes).await.unwrap();
-}
-
-async fn test_route() -> &'static str {
-    "Hello from the meta module!"
 }
