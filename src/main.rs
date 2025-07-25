@@ -13,6 +13,9 @@ async fn main() {
     let (args, _logger_handle) = initialize();
     log::debug!("Completed initialization");
 
+    let addr = SocketAddr::new(args.web_addr, args.http_port);
+    let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
+
     // if defined, register with the slot server
     if let Some(slot_port) = args.slot_port {
         // TODO: enforce localhost in args while there's no support for other
@@ -24,15 +27,12 @@ async fn main() {
         slot_client::client_impl::run_client(
             slot_port,
             module_name,
-            args.http_port,
+            listener.local_addr().expect("HTTP socket is bound").port(),
         );
     }
 
     // set up webserver
     let routes = Router::new().route("/meta/index", get(test_route));
-
-    let addr = SocketAddr::new(args.web_addr, args.http_port);
-    let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
     axum::serve(listener, routes).await.unwrap();
 }
 
