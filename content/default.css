@@ -39,6 +39,28 @@ h1 {
     letter-spacing: 5px;
 }
 
+h2 {
+    color: rgb(125, 70, 162);
+    background: rgba(207, 244, 255, 0.26);
+    box-shadow: 0 0 20px 10px rgba(124, 83, 237, 0.3);
+    border-radius: 12px;
+    padding: 8px 16px;
+}
+
+ul {
+    padding: 0
+}
+
+li {
+    list-style-type: none;
+}
+
+li h2 {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
 audio {
     display: block;
     margin-left: auto;
@@ -49,4 +71,10 @@ audio {
 
 .fancy {
     font-family: Whisper-Hearts;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
 }

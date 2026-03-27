@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blacepos.xyz</title>
+    <title>Music Dump</title>
     <link rel="stylesheet" href="/meta/content/default.css">
 </head>
 <body>
     <main>
-        <h1 id="title" class="fancy">welcome</h1>
-        <audio controls="controls" src="/meta/content/audio/Musicbox07_2.ogg"></audio>
-        <p class="centered"><a href="/meta/audio">More music</a></p>
+        <h1 id="title" class="fancy">Music Dump</h1>
+        <ul>
+            {% for file in files -%}
+                <li>
+                    <h2>{{ file.name }}</h2>
+                    <audio controls="controls" src="{{ file.path }}"></audio>
+                </li>
+            {%- endfor %}
+        </ul>
     </main>
     <footer>
         <p class="centered">All Audio &copy; 2025 Joshua Austin (CC-BY-NC 4.0)</p>

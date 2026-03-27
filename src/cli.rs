@@ -25,6 +25,6 @@ pub struct Args {
     pub http_port: u16,
 
     /// The port of the Slot server on localhost e.g., "7568"
-    #[arg(short = 's', long = "slot-addr")]
+    #[arg(short = 's', long = "slot-port")]
     pub slot_port: Option<u16>,
 }

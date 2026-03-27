@@ -6,10 +6,12 @@ authors = [ "Blacepos" ]
 
 [dependencies]
 clap = { version = "*", features = ["derive"] }
-flexi_logger = { version = "*" }
-log = { version = "*" }
+flexi_logger = "*"
+log = "*"
 tokio = { version = "*", features = ["full"] }
-axum = { version = "*" }
-tower = { version = "*" }
+axum = "*"
+tower = "*"
 tower-http = { version = "*", features = ["trace", "fs"] }
 slot = { path = "../slot" }
+tera = "*"
+serde = { version = "1.0.228", features = ["derive"] }

@@ -12,8 +12,8 @@ pub fn initialize() -> (cli::Args, LoggerHandle) {
     let args = cli::Args::parse();
 
     // setup logger
-    let logger = flexi_logger::Logger::with(args.log_level)
-        .format(flexi_logger::colored_opt_format);
+    let logger =
+        flexi_logger::Logger::with(args.log_level).format(flexi_logger::colored_opt_format);
 
     let logger_handle = match logger.start() {
         Ok(logger_handle) => logger_handle,
