@@ -5,7 +5,7 @@ A webserver module for blacepos.xyz which provides information about blacepos.xy
 ## Usage
 
 ```rust
-cargo run -- --log "DEBUG" --web-bind "127.0.0.1:8001"
+cargo run -- --log "DEBUG" --web-interface "127.0.0.1:8001"
 ```
 
 ## Slot
@@ -15,5 +15,9 @@ This server implements the Slot protocol which allows it to be unified with othe
 To enable the Slot client, specify the Slot server's port on localhost with `--slot-addr`.
 
 ```rust
-cargo run -- --log "DEBUG" --web-bind "127.0.0.1:8001" --slot-addr 7568
+cargo run -- --log "DEBUG" --web-interface "127.0.0.1:8001" --slot-addr 7568
 ```
+
+## Content Licenses
+
+All audio files in this repository © 2025 Joshua Austin (CC-BY-NC 4.0)

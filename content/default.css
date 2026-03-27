@@ -3,15 +3,32 @@
     src: url(/meta/content/fonts/Doto-Regular.ttf);
 }
 
+@font-face {
+    font-family: Whisper-Hearts;
+    src: url(/meta/content/fonts/Whisper-Hearts.otf);
+}
+
 html {
-    background-color: black;
-    color: rgb(155, 155, 155);
+    background: #B1EDFF;
+    background: linear-gradient(180deg,rgba(177, 237, 255, 1) 0%, rgba(124, 83, 237, 1) 100%);
+    color: #726fca;
 }
 
 body {
     margin: 0 auto;
     max-width: 900px;
-    min-width: 600px;
+    min-width: 440px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    color: black;
 }
 
 h1 {
@@ -19,7 +36,7 @@ h1 {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    letter-spacing: 7px;
+    letter-spacing: 5px;
 }
 
 audio {
@@ -31,5 +48,5 @@ audio {
 }
 
 .fancy {
-    font-family: Doto;
+    font-family: Whisper-Hearts;
 }
